@@ -1,229 +1,230 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Perlengkapan Komputer | Toko Online</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Perlengkapan Komputer | Toko Online</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: #f4f6f8;
-            color: #333;
-        }
-
-        header {
-            background: #0f172a;
-            color: white;
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 22px;
-        }
-
-        nav a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .hero {
-            background: linear-gradient(to right, #1e293b, #334155);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 40px 20px;
-        }
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-            text-align: center;
-        }
-
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            color: #2563eb;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        button {
-            background: #2563eb;
-            border: none;
-            padding: 10px 20px;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #1e40af;
-        }
-
-        .cart {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-        }
-
-        footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 40px;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav a {
-                margin: 10px;
-            }
-
-            .hero h2 {
-                font-size: 26px;
-            }
-        }
-    </style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f8;
+    color: #333;
+}
+header {
+    background: #0f172a;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+.hero {
+    background: linear-gradient(to right, #1e293b, #334155);
+    color: white;
+    padding: 70px 20px;
+    text-align: center;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.price {
+    color: #2563eb;
+    font-weight: bold;
+}
+button {
+    background: #2563eb;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+button:hover {
+    background: #1e40af;
+}
+.cart {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+footer {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+@media(max-width:768px){
+    header{text-align:center}
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <h1>Perlengkapan Komputer</h1>
-    <nav>
-        <a href="#">Beranda</a>
-        <a href="#produk">Produk</a>
-        <a href="#keranjang">Keranjang</a>
-        <a href="#kontak">Kontak</a>
-    </nav>
+<h1>Perlengkapan Komputer</h1>
+<nav>
+<a href="#">Beranda</a>
+<a href="#produk">Produk</a>
+<a href="#keranjang">Keranjang</a>
+<a href="#kontak">Kontak</a>
+</nav>
 </header>
 
 <section class="hero">
-    <h2>Toko Online Alat Komputer</h2>
-    <p>Hardware • Software • Aksesoris</p>
+<h2>Toko Online Alat Komputer</h2>
+<p>Hardware • Software • Aksesoris Gaming</p>
 </section>
 
 <section class="container" id="produk">
-    <h2>Produk Unggulan</h2>
+<h2>Produk Lengkap</h2>
 
-    <div class="products">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04" alt="Keyboard Mechanical">
-            <h3>Keyboard Mechanical</h3>
-            <p class="price">Rp350.000</p>
-            <button onclick="addCart('Keyboard Mechanical', 350000)">Tambah</button>
-        </div>
+<div class="products">
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1613141412501-9012977f1969" alt="Mouse Gaming">
-            <h3>Mouse Gaming</h3>
-            <p class="price">Rp250.000</p>
-            <button onclick="addCart('Mouse Gaming', 250000)">Tambah</button>
-        </div>
+<!-- Keyboard -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04">
+<h3>Keyboard Mechanical RGB</h3>
+<p class="price">Rp350.000</p>
+<button onclick="addCart('Keyboard Mechanical RGB',350000)">Tambah</button>
+</div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704" alt="RAM DDR4">
-            <h3>RAM DDR4 16GB</h3>
-            <p class="price">Rp800.000</p>
-            <button onclick="addCart('RAM DDR4 16GB', 800000)">Tambah</button>
-        </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef">
+<h3>Keyboard Gaming TKL</h3>
+<p class="price">Rp420.000</p>
+<button onclick="addCart('Keyboard Gaming TKL',420000)">Tambah</button>
+</div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1587831990711-23ca6441447b" alt="Windows 11">
-            <h3>Windows 11 Original</h3>
-            <p class="price">Rp1.200.000</p>
-            <button onclick="addCart('Windows 11 Original', 1200000)">Tambah</button>
-        </div>
-    </div>
+<!-- Mouse -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1613141412501-9012977f1969">
+<h3>Mouse Gaming</h3>
+<p class="price">Rp250.000</p>
+<button onclick="addCart('Mouse Gaming',250000)">Tambah</button>
+</div>
+
+<!-- Prosesor Intel -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea">
+<h3>Intel Core i3</h3>
+<p class="price">Rp1.800.000</p>
+<button onclick="addCart('Intel Core i3',1800000)">Tambah</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea">
+<h3>Intel Core i5</h3>
+<p class="price">Rp3.200.000</p>
+<button onclick="addCart('Intel Core i5',3200000)">Tambah</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea">
+<h3>Intel Core i7</h3>
+<p class="price">Rp5.500.000</p>
+<button onclick="addCart('Intel Core i7',5500000)">Tambah</button>
+</div>
+
+<!-- Kursi Gaming -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1616627456312-57a6d91b45c3">
+<h3>Kursi Gaming RGB</h3>
+<p class="price">Rp2.300.000</p>
+<button onclick="addCart('Kursi Gaming',2300000)">Tambah</button>
+</div>
+
+<!-- Casing -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb">
+<h3>Casing Komputer Gaming</h3>
+<p class="price">Rp650.000</p>
+<button onclick="addCart('Casing Komputer',650000)">Tambah</button>
+</div>
+
+<!-- Monitor -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc">
+<h3>Monitor 24 Inch</h3>
+<p class="price">Rp2.100.000</p>
+<button onclick="addCart('Monitor 24 Inch',2100000)">Tambah</button>
+</div>
+
+</div>
 </section>
 
 <section class="container" id="keranjang">
-    <h2>Keranjang Belanja</h2>
-    <div class="cart">
-        <ul id="cartList"></ul>
-        <p id="totalHarga"><strong>Total: Rp0</strong></p>
-        <button onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
-    </div>
+<h2>Keranjang Belanja</h2>
+<div class="cart">
+<ul id="cartList"></ul>
+<p id="totalHarga"><strong>Total: Rp0</strong></p>
+<button onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+</div>
 </section>
 
 <footer id="kontak">
-    <p>© 2026 Perlengkapan Komputer</p>
-    <p>WhatsApp: 0878-1453-0831</p>
+<p>© 2026 Perlengkapan Komputer</p>
+<p>WhatsApp: 0878-1453-0831</p>
 </footer>
 
 <script>
-    let cart = [];
-    let total = 0;
+let cart = [];
+let total = 0;
 
-    function addCart(name, price) {
-        cart.push({ name, price });
-        total += price;
-        renderCart();
-    }
+function addCart(name, price){
+    cart.push({name,price});
+    total += price;
+    renderCart();
+}
 
-    function renderCart() {
-        const list = document.getElementById("cartList");
-        list.innerHTML = "";
-        cart.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = item.name + " - Rp" + item.price.toLocaleString();
-            list.appendChild(li);
-        });
-        document.getElementById("totalHarga").innerHTML =
-            "<strong>Total: Rp" + total.toLocaleString() + "</strong>";
-    }
+function renderCart(){
+    const list = document.getElementById("cartList");
+    list.innerHTML="";
+    cart.forEach(i=>{
+        const li=document.createElement("li");
+        li.textContent=`${i.name} - Rp${i.price.toLocaleString()}`;
+        list.appendChild(li);
+    });
+    document.getElementById("totalHarga").innerHTML =
+        `<strong>Total: Rp${total.toLocaleString()}</strong>`;
+}
 
-    function checkoutWhatsApp() {
-        let pesan = "Halo, saya mau pesan:%0A";
-        cart.forEach(item => {
-            pesan += "- " + item.name + " (Rp" + item.price.toLocaleString() + ")%0A";
-        });
-        pesan += "%0ATotal: Rp" + total.toLocaleString();
-
-        window.open("https://wa.me/6287814530831?text=" + pesan, "_blank");
-    }
+function checkoutWhatsApp(){
+    let pesan="Halo, saya mau pesan:%0A";
+    cart.forEach(i=>{
+        pesan+=`- ${i.name} (Rp${i.price.toLocaleString()})%0A`;
+    });
+    pesan+=`%0ATotal: Rp${total.toLocaleString()}`;
+    window.open("https://wa.me/6287814530831?text="+pesan,"_blank");
+}
 </script>
 
 </body>
 </html>
-
