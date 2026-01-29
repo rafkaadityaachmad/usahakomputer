@@ -242,6 +242,13 @@ nav a:hover::after {
     font-size: 1.4rem;
 }
 
+.card p.description {
+    color: #a0aec0;
+    font-size: 0.9rem;
+    min-height: 40px;
+    margin-bottom: 10px;
+}
+
 .price {
     color: #32cd32;
     font-weight: bold;
@@ -438,6 +445,31 @@ footer p {
     transform: translateY(-3px);
 }
 
+/* Kategori produk */
+.category-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #ffd700;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.category-btn.active,
+.category-btn:hover {
+    background: rgba(255, 215, 0, 0.3);
+    transform: translateY(-2px);
+}
+
 /* Responsif */
 @media(max-width: 768px){
     header {
@@ -463,6 +495,10 @@ footer p {
     
     .products {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .category-filter {
+        gap: 10px;
     }
 }
 
@@ -502,6 +538,20 @@ footer p {
     0% { transform: rotate(-5deg); }
     100% { transform: rotate(5deg); }
 }
+
+/* Produk spesial Natal */
+.special-tag {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: linear-gradient(to right, #ff0000, #8b0000);
+    color: white;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 10;
+}
 </style>
 </head>
 
@@ -536,331 +586,194 @@ footer p {
 <section class="container" id="produk">
     <h2 class="section-title">Produk Spesial Natal</h2>
     
-    <div class="products">
+    <div class="category-filter">
+        <button class="category-btn active" onclick="filterProducts('all')">Semua Produk</button>
+        <button class="category-btn" onclick="filterProducts('keyboard')">Keyboard</button>
+        <button class="category-btn" onclick="filterProducts('mouse')">Mouse</button>
+        <button class="category-btn" onclick="filterProducts('processor')">Processor</button>
+        <button class="category-btn" onclick="filterProducts('motherboard')">Motherboard</button>
+        <button class="category-btn" onclick="filterProducts('ram')">RAM</button>
+        <button class="category-btn" onclick="filterProducts('ssd')">SSD</button>
+        <button class="category-btn" onclick="filterProducts('monitor')">Monitor</button>
+    </div>
+    
+    <div class="products" id="productsGrid">
         <!-- Keyboard -->
-        <div class="card">
+        <div class="card" data-category="keyboard">
             <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Keyboard Mechanical RGB">
             <h3>Keyboard Mechanical RGB</h3>
-            <p>Keyboard gaming dengan lampu RGB yang dapat disesuaikan</p>
+            <p class="description">Keyboard gaming dengan lampu RGB yang dapat disesuaikan</p>
             <p><span class="discount">Rp450.000</span> <span class="price">Rp350.000</span></p>
             <button onclick="addCartWithEffect('Keyboard Mechanical RGB',350000)">+ Keranjang</button>
         </div>
 
-        <div class="card">
+        <div class="card" data-category="keyboard">
             <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Keyboard Gaming TKL">
             <h3>Keyboard Gaming TKL</h3>
-            <p>Tenkeyless keyboard untuk gaming competitive</p>
+            <p class="description">Tenkeyless keyboard untuk gaming competitive</p>
             <p><span class="discount">Rp520.000</span> <span class="price">Rp420.000</span></p>
             <button onclick="addCartWithEffect('Keyboard Gaming TKL',420000)">+ Keranjang</button>
         </div>
 
         <!-- Mouse -->
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1613141412501-9012977f1969?ixlib=rb-1.2.1&auto=format&fit=crop&w-1350&q=80" alt="Mouse Gaming">
+        <div class="card" data-category="mouse">
+            <img src="https://images.unsplash.com/photo-1613141412501-9012977f1969?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mouse Gaming">
             <h3>Mouse Gaming</h3>
-            <p>Mouse presisi tinggi dengan 8 tombol programmable</p>
+            <p class="description">Mouse presisi tinggi dengan 8 tombol programmable</p>
             <p><span class="discount">Rp320.000</span> <span class="price">Rp250.000</span></p>
             <button onclick="addCartWithEffect('Mouse Gaming',250000)">+ Keranjang</button>
         </div>
 
         <!-- Prosesor Intel -->
-        <div class="card">
+        <div class="card" data-category="processor">
             <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Intel Core i3">
             <h3>Intel Core i3</h3>
-            <p>Prosesor entry-level untuk kebutuhan sehari-hari</p>
+            <p class="description">Prosesor entry-level untuk kebutuhan sehari-hari</p>
             <p><span class="discount">Rp2.100.000</span> <span class="price">Rp1.800.000</span></p>
             <button onclick="addCartWithEffect('Intel Core i3',1800000)">+ Keranjang</button>
         </div>
 
-        <div class="card">
+        <div class="card" data-category="processor">
             <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Intel Core i5">
             <h3>Intel Core i5</h3>
-            <p>Prosesor mid-range untuk gaming dan multitasking</p>
+            <p class="description">Prosesor mid-range untuk gaming dan multitasking</p>
             <p><span class="discount">Rp3.700.000</span> <span class="price">Rp3.200.000</span></p>
             <button onclick="addCartWithEffect('Intel Core i5',3200000)">+ Keranjang</button>
         </div>
 
-        <div class="card">
+        <div class="card" data-category="processor">
             <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Intel Core i7">
             <h3>Intel Core i7</h3>
-            <p>Prosesor high-end untuk gaming dan konten kreator</p>
+            <p class="description">Prosesor high-end untuk gaming dan konten kreator</p>
             <p><span class="discount">Rp6.200.000</span> <span class="price">Rp5.500.000</span></p>
             <button onclick="addCartWithEffect('Intel Core i7',5500000)">+ Keranjang</button>
         </div>
 
-        <!-- Kursi Gaming -->
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1616627456312-57a6d91b45c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Kursi Gaming RGB">
-            <h3>Kursi Gaming RGB</h3>
-            <p>Kursi ergonomis dengan lampu RGB dan neck pillow</p>
-            <p><span class="discount">Rp2.800.000</span> <span class="price">Rp2.300.000</span></p>
-            <button onclick="addCartWithEffect('Kursi Gaming RGB',2300000)">+ Keranjang</button>
+        <!-- Motherboard -->
+        <div class="card" data-category="motherboard">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motherboard B660">
+            <h3>ASUS TUF B660</h3>
+            <p class="description">Motherboard gaming untuk Intel Gen 12/13</p>
+            <p><span class="discount">Rp3.200.000</span> <span class="price">Rp2.750.000</span></p>
+            <button onclick="addCartWithEffect('ASUS TUF B660 Motherboard',2750000)">+ Keranjang</button>
         </div>
 
-        <!-- Casing -->
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Casing Komputer Gaming">
-            <h3>Casing Komputer Gaming</h3>
-            <p>Casing ATX dengan kaca tempered dan airflow optimal</p>
-            <p><span class="discount">Rp850.000</span> <span class="price">Rp650.000</span></p>
-            <button onclick="addCartWithEffect('Casing Komputer Gaming',650000)">+ Keranjang</button>
+        <div class="card" data-category="motherboard">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motherboard Z790">
+            <h3>MSI MPG Z790</h3>
+            <p class="description">Motherboard premium untuk overclocking</p>
+            <p><span class="discount">Rp5.500.000</span> <span class="price">Rp4.850.000</span></p>
+            <button onclick="addCartWithEffect('MSI MPG Z790 Motherboard',4850000)">+ Keranjang</button>
+        </div>
+
+        <div class="card" data-category="motherboard">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Motherboard B550">
+            <h3>Gigabyte B550 AORUS</h3>
+            <p class="description">Motherboard AMD dengan WiFi dan RGB</p>
+            <p><span class="discount">Rp3.800.000</span> <span class="price">Rp3.250.000</span></p>
+            <button onclick="addCartWithEffect('Gigabyte B550 AORUS Motherboard',3250000)">+ Keranjang</button>
+        </div>
+
+        <!-- RAM -->
+        <div class="card" data-category="ram">
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="RAM 4GB">
+            <h3>RAM 4GB DDR4</h3>
+            <p class="description">RAM 4GB DDR4 3200MHz untuk kebutuhan dasar</p>
+            <p><span class="discount">Rp450.000</span> <span class="price">Rp350.000</span></p>
+            <button onclick="addCartWithEffect('RAM 4GB DDR4',350000)">+ Keranjang</button>
+        </div>
+
+        <div class="card" data-category="ram">
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="RAM 8GB">
+            <h3>RAM 8GB DDR4 RGB</h3>
+            <p class="description">RAM 8GB DDR4 3600MHz dengan RGB lighting</p>
+            <p><span class="discount">Rp850.000</span> <span class="price">Rp720.000</span></p>
+            <button onclick="addCartWithEffect('RAM 8GB DDR4 RGB',720000)">+ Keranjang</button>
+        </div>
+
+        <div class="card" data-category="ram">
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="RAM 16GB">
+            <h3>RAM 16GB DDR5</h3>
+            <p class="description">RAM 16GB DDR5 5200MHz untuk gaming</p>
+            <p><span class="discount">Rp1.800.000</span> <span class="price">Rp1.550.000</span></p>
+            <button onclick="addCartWithEffect('RAM 16GB DDR5',1550000)">+ Keranjang</button>
+        </div>
+
+        <div class="card" data-category="ram">
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="RAM 32GB">
+            <h3>RAM 32GB DDR5</h3>
+            <p class="description">RAM 32GB DDR5 6000MHz untuk konten kreator</p>
+            <p><span class="discount">Rp3.500.000</span> <span class="price">Rp2.950.000</span></p>
+            <button onclick="addCartWithEffect('RAM 32GB DDR5',2950000)">+ Keranjang</button>
+        </div>
+
+        <div class="card" data-category="ram">
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="RAM 64GB">
+            <h3>RAM 64GB DDR5 Kit</h3>
+            <p class="description">RAM 64GB DDR5 (2x32GB) untuk workstation</p>
+            <p><span class="discount">Rp6.200.000</span> <span class="price">Rp5.500.000</span></p>
+            <button onclick="addCartWithEffect('RAM 64GB DDR5 Kit',5500000)">+ Keranjang</button>
+        </div>
+
+        <!-- SSD -->
+        <div class="card" data-category="ssd">
+            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SSD 128GB">
+            <h3>SSD 128GB NVMe</h3>
+            <p class="description">SSD NVMe 128GB untuk sistem operasi</p>
+            <p><span class="discount">Rp350.000</span> <span class="price">Rp280.000</span></p>
+            <button onclick="addCartWithEffect('SSD 128GB NVMe',280000)">+ Keranjang</button>
+        </div>
+
+        <div class="card" data-category="ssd">
+            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SSD 256GB">
+            <h3>SSD 256GB NVMe</h3>
+            <p class="description">SSD NVMe 256GB dengan kecepatan tinggi</p>
+            <p><span class="discount">Rp550.000</span> <span class="price">Rp450.000</span></p>
+            <button onclick="addCartWithEffect('SSD 256GB NVMe',450000)">+ Keranjang</button>
+        </div>
+
+        <div class="card" data-category="ssd">
+            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SSD 512GB">
+            <h3>SSD 512GB NVMe</h3>
+            <p class="description">SSD NVMe 512GB untuk gaming dan aplikasi</p>
+            <p><span class="discount">Rp950.000</span> <span class="price">Rp820.000</span></p>
+            <button onclick="addCartWithEffect('SSD 512GB NVMe',820000)">+ Keranjang</button>
+        </div>
+
+        <div class="card" data-category="ssd">
+            <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SSD 1TB">
+            <h3>SSD 1TB NVMe</h3>
+            <p class="description">SSD NVMe 1TB dengan heatsink RGB</p>
+            <p><span class="discount">Rp1.800.000</span> <span class="price">Rp1.550.000</span></p>
+            <button onclick="addCartWithEffect('SSD 1TB NVMe',1550000)">+ Keranjang</button>
         </div>
 
         <!-- Monitor -->
-        <div class="card">
+        <div class="card" data-category="monitor">
             <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Monitor 24 Inch">
             <h3>Monitor 24" 144Hz</h3>
-            <p>Monitor gaming 24 inch dengan refresh rate 144Hz</p>
+            <p class="description">Monitor gaming 24 inch dengan refresh rate 144Hz</p>
             <p><span class="discount">Rp2.500.000</span> <span class="price">Rp2.100.000</span></p>
             <button onclick="addCartWithEffect('Monitor 24" 144Hz',2100000)">+ Keranjang</button>
         </div>
-    </div>
-</section>
 
-<section class="container" id="keranjang">
-    <h2 class="section-title">Keranjang Belanja Natal 🎁</h2>
-    <div class="cart">
-        <h3>Items di Keranjang:</h3>
-        <ul id="cartList"></ul>
-        <p id="totalHarga"><strong>Total: Rp0</strong></p>
-        <button class="checkout-btn" onclick="checkoutWhatsApp()">
-            <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-        </button>
-    </div>
-</section>
+        <div class="card" data-category="monitor">
+            <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Monitor 27 Inch">
+            <h3>Monitor 27" 165Hz</h3>
+            <p class="description">Monitor gaming 27 inch QHD 165Hz IPS</p>
+            <p><span class="discount">Rp4.200.000</span> <span class="price">Rp3.650.000</span></p>
+            <button onclick="addCartWithEffect('Monitor 27" 165Hz QHD',3650000)">+ Keranjang</button>
+        </div>
 
-<footer id="kontak">
-    <div class="tree-decoration">🎄</div>
-    <p>© 2026 Perlengkapan Komputer - Selamat Natal & Tahun Baru!</p>
-    <p><i class="fas fa-phone"></i> WhatsApp: 0878-1453-0831</p>
-    <p><i class="fas fa-envelope"></i> Email: natal@toko-komputer.com</p>
-    <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-tiktok"></i></a>
-    </div>
-</footer>
+        <div class="card" data-category="monitor">
+            <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Monitor 32 Inch">
+            <h3>Monitor 32" 4K</h3>
+            <p class="description">Monitor 32 inch 4K untuk produktivitas</p>
+            <p><span class="discount">Rp5.800.000</span> <span class="price">Rp4.950.000</span></p>
+            <button onclick="addCartWithEffect('Monitor 32" 4K',4950000)">+ Keranjang</button>
+        </div>
 
-<!-- Konfirmasi tambah ke keranjang -->
-<div id="confirmation" class="confirmation">
-    <i class="fas fa-check-circle"></i>
-    <span>Ditambahkan ke keranjang!</span>
-</div>
-
-<script>
-let cart = [];
-let total = 0;
-
-// Membuat efek salju
-function createSnow() {
-    const snowContainer = document.getElementById('snow-container');
-    for (let i = 0; i < 50; i++) {
-        const snowflake = document.createElement('div');
-        snowflake.className = 'snowflake';
-        snowflake.style.width = Math.random() * 8 + 4 + 'px';
-        snowflake.style.height = snowflake.style.width;
-        snowflake.style.left = Math.random() * 100 + 'vw';
-        snowflake.style.top = '-10px';
-        snowflake.style.opacity = Math.random() * 0.6 + 0.3;
-        snowflake.style.animationDuration = Math.random() * 5 + 5 + 's';
-        snowflake.style.animationDelay = Math.random() * 5 + 's';
-        snowContainer.appendChild(snowflake);
-        
-        // Animasi jatuhnya salju
-        animateSnow(snowflake);
-    }
-}
-
-function animateSnow(element) {
-    const startX = parseFloat(element.style.left);
-    const startY = -10;
-    const endY = window.innerHeight + 10;
-    const duration = parseFloat(element.style.animationDuration) * 1000;
-    const startTime = Date.now() + parseFloat(element.style.animationDelay) * 1000;
-    
-    function fall() {
-        const now = Date.now();
-        if (now < startTime) {
-            requestAnimationFrame(fall);
-            return;
-        }
-        
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Gerakan turun dengan sedikit gerakan horizontal
-        const currentY = startY + (endY - startY) * progress;
-        const sway = Math.sin(progress * Math.PI * 2) * 30; // Gerakan ke kiri/kanan
-        const currentX = startX + sway;
-        
-        element.style.top = currentY + 'px';
-        element.style.left = currentX + 'px';
-        
-        if (progress < 1) {
-            requestAnimationFrame(fall);
-        } else {
-            // Reset salju ke atas
-            element.style.top = '-10px';
-            element.style.left = Math.random() * 100 + 'vw';
-            animateSnow(element);
-        }
-    }
-    
-    requestAnimationFrame(fall);
-}
-
-// Membuat lampu natal berkedip
-function createChristmasLights() {
-    const container = document.getElementById('lights-container');
-    const colors = ['#ff0000', '#32cd32', '#ffd700', '#ffffff', '#ff69b4'];
-    
-    for (let i = 0; i < 30; i++) {
-        const light = document.createElement('div');
-        light.className = 'light';
-        light.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        light.style.left = Math.random() * 100 + 'vw';
-        light.style.top = Math.random() * 20 + 'vh';
-        light.style.animationDelay = Math.random() * 2 + 's';
-        container.appendChild(light);
-    }
-}
-
-// Fungsi dengan efek untuk menambahkan ke keranjang
-function addCartWithEffect(name, price) {
-    // Efek visual pada tombol
-    const button = event.target;
-    button.innerHTML = '<i class="fas fa-check"></i> Ditambahkan!';
-    button.style.background = 'linear-gradient(to right, #228b22, #32cd32)';
-    
-    setTimeout(() => {
-        button.innerHTML = '+ Keranjang';
-        button.style.background = 'linear-gradient(to right, #32cd32, #228b22)';
-    }, 1000);
-    
-    // Tambahkan ke keranjang
-    cart.push({name, price});
-    total += price;
-    renderCart();
-    
-    // Tampilkan konfirmasi
-    showConfirmation();
-    
-    // Efek suara (jika diizinkan browser)
-    playClickSound();
-}
-
-function playClickSound() {
-    // Coba buat suara klik sederhana dengan Web Audio API
-    try {
-        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const oscillator = audioContext.createOscillator();
-        const gainNode = audioContext.createGain();
-        
-        oscillator.connect(gainNode);
-        gainNode.connect(audioContext.destination);
-        
-        oscillator.frequency.value = 800;
-        oscillator.type = 'sine';
-        
-        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-        
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 0.1);
-    } catch (e) {
-        console.log("Audio tidak didukung atau diblokir");
-    }
-}
-
-function showConfirmation() {
-    const confirmation = document.getElementById('confirmation');
-    confirmation.classList.add('show');
-    
-    setTimeout(() => {
-        confirmation.classList.remove('show');
-    }, 2000);
-}
-
-function renderCart() {
-    const list = document.getElementById("cartList");
-    list.innerHTML = "";
-    
-    if (cart.length === 0) {
-        list.innerHTML = '<li style="text-align: center; color: #aaa;">Keranjang belanja kosong</li>';
-    } else {
-        cart.forEach((item, index) => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-                <span>${item.name}</span>
-                <div>
-                    <span style="color: #ffd700; margin-right: 15px;">Rp${item.price.toLocaleString()}</span>
-                    <button class="remove-item" onclick="removeCartItem(${index})"><i class="fas fa-times"></i></button>
-                </div>
-            `;
-            list.appendChild(li);
-        });
-    }
-    
-    document.getElementById("totalHarga").innerHTML = 
-        `<strong>Total: Rp${total.toLocaleString()}</strong>`;
-}
-
-function removeCartItem(index) {
-    total -= cart[index].price;
-    cart.splice(index, 1);
-    renderCart();
-    
-    // Efek konfirmasi penghapusan
-    const confirmation = document.getElementById('confirmation');
-    confirmation.innerHTML = '<i class="fas fa-trash-alt"></i><span>Item dihapus dari keranjang!</span>';
-    confirmation.style.background = 'linear-gradient(to right, #8b0000, #ff0000)';
-    confirmation.classList.add('show');
-    
-    setTimeout(() => {
-        confirmation.classList.remove('show');
-        confirmation.innerHTML = '<i class="fas fa-check-circle"></i><span>Ditambahkan ke keranjang!</span>';
-        confirmation.style.background = 'linear-gradient(to right, #32cd32, #228b22)';
-    }, 1500);
-}
-
-function checkoutWhatsApp() {
-    if (cart.length === 0) {
-        alert("Keranjang belanja kosong! Tambahkan produk terlebih dahulu.");
-        return;
-    }
-    
-    let pesan = "Halo, saya mau pesan produk berikut (Spesial Natal):%0A%0A";
-    cart.forEach((item, index) => {
-        pesan += `${index + 1}. ${item.name} - Rp${item.price.toLocaleString()}%0A`;
-    });
-    pesan += `%0ATotal: Rp${total.toLocaleString()}%0A%0A*Selamat Natal!* 🎄`;
-    
-    window.open(`https://wa.me/6287814530831?text=${encodeURIComponent(pesan)}`, "_blank");
-}
-
-// Inisialisasi efek halaman
-window.onload = function() {
-    createSnow();
-    createChristmasLights();
-    renderCart();
-    
-    // Tambahkan efek pada kartu saat diklik
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            // Hindari efek klik jika mengklik tombol
-            if (e.target.tagName === 'BUTTON') return;
-            
-            this.style.transform = 'scale(0.95)';
-            this.style.boxShadow = '0 5px 15px rgba(139, 0, 0, 0.6)';
-            
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.boxShadow = '';
-            }, 150);
-        });
-    });
-};
-</script>
-</body>
-</html>
+        <div class="card" data-category="monitor">
+            <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Monitor Ultrawide">
+            <h3>Monitor 34" Ultrawide</h3>
+            <p class
