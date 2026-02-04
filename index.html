@@ -327,17 +327,23 @@ button:focus:not(:active)::after {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 215, 0, 0.3);
     backdrop-filter: blur(5px);
+    margin-top: 40px;
 }
 
 .cart h3 {
     color: #ffd700;
     margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 #cartList {
     list-style: none;
     padding: 0;
     margin: 0 0 20px 0;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 #cartList li {
@@ -500,6 +506,10 @@ footer p {
     .category-filter {
         gap: 10px;
     }
+    
+    .cart {
+        padding: 15px;
+    }
 }
 
 /* Efek konfirmasi tambah ke keranjang */
@@ -552,6 +562,35 @@ footer p {
     font-weight: bold;
     z-index: 10;
 }
+
+/* Empty cart state */
+.empty-cart {
+    text-align: center;
+    padding: 30px;
+    color: #a0aec0;
+}
+
+.empty-cart i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #ffd700;
+}
+
+/* Cart counter */
+.cart-counter {
+    background: #ff0000;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
 </style>
 </head>
 
@@ -570,7 +609,7 @@ footer p {
     <nav>
         <a href="#"><i class="fas fa-home"></i> Beranda</a>
         <a href="#produk"><i class="fas fa-gift"></i> Produk</a>
-        <a href="#keranjang"><i class="fas fa-shopping-cart"></i> Keranjang</a>
+        <a href="#keranjang"><i class="fas fa-shopping-cart"></i> Keranjang <span id="cartCount">(0)</span></a>
         <a href="#kontak"><i class="fas fa-phone-alt"></i> Kontak</a>
     </nav>
 </header>
@@ -604,7 +643,7 @@ footer p {
             <h3>Keyboard Mechanical RGB</h3>
             <p class="description">Keyboard gaming dengan lampu RGB yang dapat disesuaikan</p>
             <p><span class="discount">Rp450.000</span> <span class="price">Rp350.000</span></p>
-            <button onclick="addCartWithEffect('Keyboard Mechanical RGB',350000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="Keyboard Mechanical RGB" data-price="350000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="keyboard">
@@ -612,7 +651,7 @@ footer p {
             <h3>Keyboard Gaming TKL</h3>
             <p class="description">Tenkeyless keyboard untuk gaming competitive</p>
             <p><span class="discount">Rp520.000</span> <span class="price">Rp420.000</span></p>
-            <button onclick="addCartWithEffect('Keyboard Gaming TKL',420000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="Keyboard Gaming TKL" data-price="420000">+ Keranjang</button>
         </div>
 
         <!-- Mouse -->
@@ -621,7 +660,7 @@ footer p {
             <h3>Mouse Gaming</h3>
             <p class="description">Mouse presisi tinggi dengan 8 tombol programmable</p>
             <p><span class="discount">Rp320.000</span> <span class="price">Rp250.000</span></p>
-            <button onclick="addCartWithEffect('Mouse Gaming',250000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="Mouse Gaming" data-price="250000">+ Keranjang</button>
         </div>
 
         <!-- Prosesor Intel -->
@@ -630,7 +669,7 @@ footer p {
             <h3>Intel Core i3</h3>
             <p class="description">Prosesor entry-level untuk kebutuhan sehari-hari</p>
             <p><span class="discount">Rp2.100.000</span> <span class="price">Rp1.800.000</span></p>
-            <button onclick="addCartWithEffect('Intel Core i3',1800000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="Intel Core i3" data-price="1800000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="processor">
@@ -638,7 +677,7 @@ footer p {
             <h3>Intel Core i5</h3>
             <p class="description">Prosesor mid-range untuk gaming dan multitasking</p>
             <p><span class="discount">Rp3.700.000</span> <span class="price">Rp3.200.000</span></p>
-            <button onclick="addCartWithEffect('Intel Core i5',3200000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="Intel Core i5" data-price="3200000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="processor">
@@ -646,7 +685,7 @@ footer p {
             <h3>Intel Core i7</h3>
             <p class="description">Prosesor high-end untuk gaming dan konten kreator</p>
             <p><span class="discount">Rp6.200.000</span> <span class="price">Rp5.500.000</span></p>
-            <button onclick="addCartWithEffect('Intel Core i7',5500000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="Intel Core i7" data-price="5500000">+ Keranjang</button>
         </div>
 
         <!-- Motherboard -->
@@ -655,7 +694,7 @@ footer p {
             <h3>ASUS TUF B660</h3>
             <p class="description">Motherboard gaming untuk Intel Gen 12/13</p>
             <p><span class="discount">Rp3.200.000</span> <span class="price">Rp2.750.000</span></p>
-            <button onclick="addCartWithEffect('ASUS TUF B660 Motherboard',2750000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="ASUS TUF B660 Motherboard" data-price="2750000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="motherboard">
@@ -663,7 +702,7 @@ footer p {
             <h3>MSI MPG Z790</h3>
             <p class="description">Motherboard premium untuk overclocking</p>
             <p><span class="discount">Rp5.500.000</span> <span class="price">Rp4.850.000</span></p>
-            <button onclick="addCartWithEffect('MSI MPG Z790 Motherboard',4850000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="MSI MPG Z790 Motherboard" data-price="4850000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="motherboard">
@@ -671,7 +710,7 @@ footer p {
             <h3>Gigabyte B550 AORUS</h3>
             <p class="description">Motherboard AMD dengan WiFi dan RGB</p>
             <p><span class="discount">Rp3.800.000</span> <span class="price">Rp3.250.000</span></p>
-            <button onclick="addCartWithEffect('Gigabyte B550 AORUS Motherboard',3250000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="Gigabyte B550 AORUS Motherboard" data-price="3250000">+ Keranjang</button>
         </div>
 
         <!-- RAM -->
@@ -680,7 +719,7 @@ footer p {
             <h3>RAM 4GB DDR4</h3>
             <p class="description">RAM 4GB DDR4 3200MHz untuk kebutuhan dasar</p>
             <p><span class="discount">Rp450.000</span> <span class="price">Rp350.000</span></p>
-            <button onclick="addCartWithEffect('RAM 4GB DDR4',350000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="RAM 4GB DDR4" data-price="350000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="ram">
@@ -688,7 +727,7 @@ footer p {
             <h3>RAM 8GB DDR4 RGB</h3>
             <p class="description">RAM 8GB DDR4 3600MHz dengan RGB lighting</p>
             <p><span class="discount">Rp850.000</span> <span class="price">Rp720.000</span></p>
-            <button onclick="addCartWithEffect('RAM 8GB DDR4 RGB',720000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="RAM 8GB DDR4 RGB" data-price="720000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="ram">
@@ -696,7 +735,7 @@ footer p {
             <h3>RAM 16GB DDR5</h3>
             <p class="description">RAM 16GB DDR5 5200MHz untuk gaming</p>
             <p><span class="discount">Rp1.800.000</span> <span class="price">Rp1.550.000</span></p>
-            <button onclick="addCartWithEffect('RAM 16GB DDR5',1550000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="RAM 16GB DDR5" data-price="1550000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="ram">
@@ -704,7 +743,7 @@ footer p {
             <h3>RAM 32GB DDR5</h3>
             <p class="description">RAM 32GB DDR5 6000MHz untuk konten kreator</p>
             <p><span class="discount">Rp3.500.000</span> <span class="price">Rp2.950.000</span></p>
-            <button onclick="addCartWithEffect('RAM 32GB DDR5',2950000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="RAM 32GB DDR5" data-price="2950000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="ram">
@@ -712,7 +751,7 @@ footer p {
             <h3>RAM 64GB DDR5 Kit</h3>
             <p class="description">RAM 64GB DDR5 (2x32GB) untuk workstation</p>
             <p><span class="discount">Rp6.200.000</span> <span class="price">Rp5.500.000</span></p>
-            <button onclick="addCartWithEffect('RAM 64GB DDR5 Kit',5500000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="RAM 64GB DDR5 Kit" data-price="5500000">+ Keranjang</button>
         </div>
 
         <!-- SSD -->
@@ -721,7 +760,7 @@ footer p {
             <h3>SSD 128GB NVMe</h3>
             <p class="description">SSD NVMe 128GB untuk sistem operasi</p>
             <p><span class="discount">Rp350.000</span> <span class="price">Rp280.000</span></p>
-            <button onclick="addCartWithEffect('SSD 128GB NVMe',280000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="SSD 128GB NVMe" data-price="280000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="ssd">
@@ -729,7 +768,7 @@ footer p {
             <h3>SSD 256GB NVMe</h3>
             <p class="description">SSD NVMe 256GB dengan kecepatan tinggi</p>
             <p><span class="discount">Rp550.000</span> <span class="price">Rp450.000</span></p>
-            <button onclick="addCartWithEffect('SSD 256GB NVMe',450000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="SSD 256GB NVMe" data-price="450000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="ssd">
@@ -737,7 +776,7 @@ footer p {
             <h3>SSD 512GB NVMe</h3>
             <p class="description">SSD NVMe 512GB untuk gaming dan aplikasi</p>
             <p><span class="discount">Rp950.000</span> <span class="price">Rp820.000</span></p>
-            <button onclick="addCartWithEffect('SSD 512GB NVMe',820000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="SSD 512GB NVMe" data-price="820000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="ssd">
@@ -745,7 +784,7 @@ footer p {
             <h3>SSD 1TB NVMe</h3>
             <p class="description">SSD NVMe 1TB dengan heatsink RGB</p>
             <p><span class="discount">Rp1.800.000</span> <span class="price">Rp1.550.000</span></p>
-            <button onclick="addCartWithEffect('SSD 1TB NVMe',1550000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name="SSD 1TB NVMe" data-price="1550000">+ Keranjang</button>
         </div>
 
         <!-- Monitor -->
@@ -754,26 +793,11 @@ footer p {
             <h3>Monitor 24" 144Hz</h3>
             <p class="description">Monitor gaming 24 inch dengan refresh rate 144Hz</p>
             <p><span class="discount">Rp2.500.000</span> <span class="price">Rp2.100.000</span></p>
-            <button onclick="addCartWithEffect('Monitor 24" 144Hz',2100000)">+ Keranjang</button>
+            <button class="add-to-cart" data-name='Monitor 24" 144Hz' data-price="2100000">+ Keranjang</button>
         </div>
 
         <div class="card" data-category="monitor">
             <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Monitor 27 Inch">
             <h3>Monitor 27" 165Hz</h3>
             <p class="description">Monitor gaming 27 inch QHD 165Hz IPS</p>
-            <p><span class="discount">Rp4.200.000</span> <span class="price">Rp3.650.000</span></p>
-            <button onclick="addCartWithEffect('Monitor 27" 165Hz QHD',3650000)">+ Keranjang</button>
-        </div>
-
-        <div class="card" data-category="monitor">
-            <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Monitor 32 Inch">
-            <h3>Monitor 32" 4K</h3>
-            <p class="description">Monitor 32 inch 4K untuk produktivitas</p>
-            <p><span class="discount">Rp5.800.000</span> <span class="price">Rp4.950.000</span></p>
-            <button onclick="addCartWithEffect('Monitor 32" 4K',4950000)">+ Keranjang</button>
-        </div>
-
-        <div class="card" data-category="monitor">
-            <img src="https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Monitor Ultrawide">
-            <h3>Monitor 34" Ultrawide</h3>
-            <p class
+            <p><span class="discount">Rp4.200.
